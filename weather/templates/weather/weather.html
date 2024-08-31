@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'weather/css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Weather in {{ city }}</h1>
+        {% if weather_data.cod == 200 %}
+            <div class="weather-card">
+                <p class="city">City: {{ city }}</p>
+                <p class="temp">Temperature: {{ weather_data.main.temp }}°C</p>
+                <p class="description">Weather: {{ weather_data.weather.0.description }}</p>
+                <p class="humidity">Humidity: {{ weather_data.main.humidity }}%</p>
+                <p class="wind">Wind Speed: {{ weather_data.wind.speed }} m/s</p>
+            </div>
+        {% else %}
+            <p class="error">City not found or an error occurred.</p>
+        {% endif %}
+        <form method="get" action="">
+            <input type="text" name="city" placeholder="Enter city" value="{{ city }}" class="input-city">
+            <button type="submit" class="button-get-weather">Get Weather</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+    </form>
+</body>
+</html>
+
+
+
+
+
